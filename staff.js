@@ -47,5 +47,6 @@ function openRoleEditor(currentId=''){if(!canRoles())return;const row=records.fi
 function openModal(html){closeModal();modal=document.createElement('div');modal.className='staff-modal';modal.innerHTML=`<div class="staff-dialog" role="dialog" aria-modal="true" aria-label="Staff editor">${html}</div>`;document.body.append(modal);modal.addEventListener('click',e=>{if(e.target===modal||e.target.closest('[data-close-modal]'))closeModal()})}
 function closeModal(){if(modal){modal.remove();modal=null}}
 document.addEventListener('click',e=>{const sectionBtn=e.target.closest('[data-staff-section]');if(sectionBtn){e.preventDefault();query='';openSection(sectionBtn.dataset.staffSection)}});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+window.BWA_V10_STAFF_CONTEXT=()=>({db,mode,role,user});
 window.addEventListener('bwa:navigate',e=>{if(e.detail.page==='staff'&&mode==='login')initialize()});if(location.hash==='#staff')initialize();else loginUI();
 })();
